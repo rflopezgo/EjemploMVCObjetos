@@ -37,6 +37,6 @@
 #
 <ifModule mod_rewrite.c>
 RewriteEngine on
-RewriteRule ^(.*)$ public/$1 [L]
-RewriteRule     ^$ public/   [L]
+RewriteRule ^(.*)$ /$1 [L]
+RewriteRule     ^$ /   [L]
 </ifModule>
