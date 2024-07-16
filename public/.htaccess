@@ -22,7 +22,7 @@
 Options -Multiviews
 RewriteEngine On # controla hailitación del script
 
-RewriteBase /ProyectoCb47/getURL/public
+RewriteBase /public
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
