@@ -1,0 +1,42 @@
+# mod_rewrite.c es un módulo que permite:
+# 	i) crear direcciones URL alternativas a los servicios de alojamiento. 
+# 	ii) bloquear direcciones IP para impedir el acceso al sitio web 
+# 	iii) crear un redirección de nuestro dominio a otro sitio. 
+# 	iv) evitar, hotlinking, que otros sitios usen nuestras imágenes. 
+# 	v) ocultar información sensible, evita que se muestren datos que comprometan la seguridad del sitio web. 
+#      El módulo se coloca en el directorio raíz del sitio web
+#
+# RewriteEngine on habilita el módulo mod_rewrite.
+#
+# RewriteRule ^$ public/ [L] regla de reescritura para una URL. 
+# Cada regla tiene DOS partes: 
+# 1de2 condición es una expresión regular que define el patrón que debe cumlir la URL, para que se aplique la regla. 
+# 2de2 acción es la instrucción que indica cómo se debe modoficar la URL.
+#      existen (R)redirección, (F)prohibición, (P)pasarela, (S)string,(L) última re-escritura interna. 
+# Por ejemplo:
+# ^$ public/ [L] 
+# 	donde: ^$       -condición- existe una expresión regular que coincide con una ruta URL con exactamente cero caracteres, entoces
+#           public/ -acción-    redirige a la implementación en la carpeta public/ y .
+#           [L]     -last-      última regla que se ejecuta, si la expresión regular coincide, no se avanza más en el .htaccess
+#
+# ^(.*)$ public/$1 [L] 
+# 	donde:  ^(.*)   -condición- existe una expresión regular con cualquier número de caractetes, entonces 
+#         public/$1 -acción- redirige a la implementación que se encuentra en la carpeta public, con el conjunto 
+#                    elementos posteriores a la raiz dela servidor.
+#         http://localhost/proyectosCb47/getURL/controlador/metodo/arg/
+#         |        raíz del servidor          ||    1     ||  2  || 3 |... 
+#
+#Referencia: 
+# ¿Qué es el módulo mod_rewrite y para qué sirve? 
+# 	Disponible:	https://www.hostinet.com/formacion/hosting-alojamiento/que-es-el-modulo-mod_rewrite-y-para-que-sirve/
+#	Consultado:02Jun24
+# RewriteRule directive meaning in .htaccess https://stackoverflow.com/questions/50900504/rewriterule-directive-meaning-in-htaccess
+# Significado de la directiva RewriteRule en .htaccess
+# 	Disponible:  https://stackoverflow.com/questions/50900504/rewriterule-directive-meaning-in-htaccess
+#	Consultado:02Jun24
+#
+<ifModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^(.*)$ public/$1 [L]
+RewriteRule     ^$ public/   [L]
+</ifModule>
