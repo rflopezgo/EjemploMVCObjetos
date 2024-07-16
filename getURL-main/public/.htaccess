@@ -1,0 +1,30 @@
+# Directiva 
+#		RewriteBase especifica el prefijo de URL que se utilizará para las directivas 
+#                 RewriteRule que sustituyen una ruta relativa.
+# 		RewriteBase /ProyectosCb47/getURL/public
+# Directiva 
+#		RewriteCond define una condición de regla, 
+#       
+#       	Si, el directorio con el nombre especificado NO existe !-d, 
+#       	Si, el filecon elnombre especificado NO existe !-f,
+# 		Ejecura la sigiente regla de re-escritura
+#			RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+#		
+#Referencia:
+# ¿Qué significa esto: RewriteCond %{REQUEST_FILENAME} !-f/d?
+# Disponible: https://www.sitepoint.com/community/t/what-does-this-mean-rewritecond-request-filename-f-d/2034
+# Consultado:02Jun24
+# Apache Module mod_rewrite
+# Disponible: https://httpd.apache.org/docs/trunk/en/mod/mod_rewrite.html#rewritebase
+# Consultado:02Jun24
+
+<ifModule mod_rewrite.c>
+Options -Multiviews
+RewriteEngine On # controla hailitación del script
+
+RewriteBase /ProyectoCb47/getURL/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</ifModule> 
