@@ -2,6 +2,7 @@
 class CocheController
 {
     var $coches;
+    
     /**define un objeto tipo coche con 5 atributos*/
     function __construct()
     {
@@ -18,7 +19,7 @@ class CocheController
     public function index()
     {
         $rowset = $this->coches;
-        require("view/todosRegistros.php");
+        require(__DIR__."/../view/todosRegistros.php");
     }
 
     /**
@@ -31,8 +32,8 @@ class CocheController
         if (array_key_exists($id,$this->coches))
         {
             $row = $this->coches[$id];
-            require("view/unRegistro.php");
-        }
+            require(__DIR__."/../view/unRegistro.php");
+       }
         else
         {
             $this->index();
