@@ -11,7 +11,6 @@
     }
 </style>
 
-
 <h3>Renderiza atributos de un objeto tipo coche</h3>
 <table>
     <tr>
