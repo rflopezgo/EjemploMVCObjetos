@@ -24,26 +24,43 @@ Descripción.
 */
 
 /*fromController/controlador principal importa recursos*/
-require("./model/Coche.php");
-require("./controller/CocheController.php");
+require_once("model/Coche.php");
+require_once("controller/CocheController.php");
 error_reporting(0);
+//*00 Variables generales
+$develop = FALSE;
 
 /*01 controller es un objeto tipo: coche con 4 atributos estáticos*/
 $controller = new CocheController;
 
 /*02 enruta cualquier petición URL, hacia controlador principal index.php  */
-$home="http://localhost/EjemploMvc/index.php/";
+$home="http://localhost/EjemploMVCObjetos/index.php/";
 // enruta una petición URL hacia un componente de petición
-echo "componetes de petición: ",$home;
-echo "<br>";
-echo "http://localhost/EjemploMvc/index.php/verRegistro/1";
+if ($develop){
+    echo "componetes de petición: ",$home;
+    echo "<br>";
+    echo "http://localhost/EjemploMVCObjetos/index.php/verRegistro/1";
+    echo "<br>";
+}
 
 /*03 remueve raiz/home de la petición url */
 $ruta = str_replace($home, "", $_SERVER["REQUEST_URI"]);
-
+if ($develop){
+    echo "ruta: ", $ruta;
+    echo "<br>";
+}
 /*04 serializa la petición */
 $array_ruta = array_filter(explode("/", $ruta));
-
+if ($develop){
+    echo "Array_ruta::App: ", $array_ruta[1];
+    echo "<br>";
+    echo "Array_ruta::Componente: ", $array_ruta[2];
+    echo "<br>";
+    echo "Array_ruta::Metodo: ", $array_ruta[3];
+    echo "<br>";
+    echo "Array_ruta::Registro: ", $array_ruta[4];
+    echo "<br>";
+}
 /*05 filtra y enruta tipo de petición*/
 if ( $array_ruta[3]=="verRegistro" && is_numeric($array_ruta[4]) )
 {
