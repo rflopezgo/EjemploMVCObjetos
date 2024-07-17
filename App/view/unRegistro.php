@@ -1,14 +1,14 @@
 <style>
-th {
-    width: 8rem;
-    text-align: left;
-    border-bottom: 1px solid black;
-    border-style:ridge;
-}
+    th {
+        width: 8rem;
+        text-align: left;
+        border-bottom: 2px solid red;
+        border-style:ridge;
+    }
 
-td {
-    width: 8rem;
-}
+    td {
+        width: 8rem;
+    }
 </style>
 
 <h3>Registro de un coche</h3>
